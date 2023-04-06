@@ -20,6 +20,6 @@ func main() {
 	// Setup routes
 	routes.SetupAllRoutes(app)
 
-	// Listen localhost:2000
-	app.Listen("localhost:2000")
+	// Listen on host
+	app.Listen("0.0.0.0")
 }
