@@ -12,7 +12,7 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	dbURL := "postgres://postgres:denielpuffmeister@127.0.0.1:5432/postgres"
+	dbURL := "postgresql://postgres:MeEUeO04ae4gKTfnnaER@containers-us-west-56.railway.app:6085/railway"
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Silent),
@@ -23,7 +23,7 @@ func Connect() {
 	}
 	log.Println("Connected")
 
-	err = db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{})
 
 	DB = db
 }
