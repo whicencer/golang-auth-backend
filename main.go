@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -13,6 +14,11 @@ func main() {
 	// Create a new app
 	app := fiber.New()
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
+
 	// CORS middleware
 	app.Use(cors.New())
 
@@ -23,7 +29,7 @@ func main() {
 	routes.SetupAllRoutes(app)
 
 	// Listen on host
-	log.Fatal(app.Listen("0.0.0.0:3000"))
+	log.Fatal(app.Listen("0.0.0.0:" + port))
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello")
