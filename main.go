@@ -30,8 +30,4 @@ func main() {
 
 	// Listen on host
 	log.Fatal(app.Listen("0.0.0.0:" + port))
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello")
-	})
 }
