@@ -2,6 +2,7 @@ package database
 
 import (
 	"log"
+	"os"
 
 	"github.com/whicencer/golang-auth/models"
 	"gorm.io/driver/postgres"
@@ -12,7 +13,7 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	dbURL := "postgresql://postgres:MeEUeO04ae4gKTfnnaER@containers-us-west-56.railway.app:6085/railway"
+	dbURL := os.Getenv("DATABASE_URL")
 
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Silent),
