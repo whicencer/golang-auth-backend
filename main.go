@@ -21,5 +21,5 @@ func main() {
 	routes.SetupAllRoutes(app)
 
 	// Listen on host
-	app.Listen("0.0.0.0")
+	app.Listen("0.0.0.0:3000")
 }
